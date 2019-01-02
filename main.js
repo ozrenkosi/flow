@@ -30,8 +30,8 @@ function draw() {
       xPos = map(col, 0, columns-1, margin, width-margin);
 
       for (let row = 0; row < rows; row++) {
-        yPos = sinFunc(frequency, offset+TWO_PI*strand, -amplitude, amplitude) + row*rowSpacing - (rows*rowSpacing)/2;
-        particleSize = cosFunc(frequency, offset-row/rows+TWO_PI*strand, 0, particleSizeMAX);
+        yPos = sinFunc(frequency, offset+(PI/4)*strand, -amplitude, amplitude) + row*rowSpacing - (rows*rowSpacing)/2;
+        particleSize = cosFunc(frequency, offset-row/rows+(PI/4)*strand, 0, particleSizeMAX);
 
         fill(lerpColor(colorA, colorB, row/rows));
         ellipse(xPos, yPos, particleSize);
