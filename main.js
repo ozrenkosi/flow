@@ -9,6 +9,8 @@ let yPos;
 let offset;
 let rowSpacing = 16;
 let margin = 100;
+let strandOffset;
+let rowSizeOffset;
 
 function setup() {
   createCanvas(600, 600);
@@ -26,12 +28,18 @@ function draw() {
 	noStroke();
 
   for (let strand = 0; strand < 2; strand++) {
+    strandOffset = (PI/4)*strand;
+
     for (let col = 0; col < columns; col++) {
       xPos = map(col, 0, columns-1, margin, width-margin);
 
       for (let row = 0; row < rows; row++) {
-        yPos = sinFunc(frequency, offset+(PI/4)*strand, -amplitude, amplitude) + row*rowSpacing - (rows*rowSpacing)/2;
-        particleSize = cosFunc(frequency, offset-row/rows+(PI/4)*strand, 0, particleSizeMAX);
+        rowSizeOffset = row/rows;
+
+        particleMoveDown = row*rowSpacing - (rows*rowSpacing)/2;
+        yPos = sinFunc(frequency, offset+strandOffset, -amplitude, amplitude) + particleMoveDown;
+
+        particleSize = cosFunc(frequency, offset-rowSizeOffset+strandOffset, 0, particleSizeMAX);
 
         fill(lerpColor(colorA, colorB, row/rows));
         ellipse(xPos, yPos, particleSize);
