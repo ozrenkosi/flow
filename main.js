@@ -11,21 +11,23 @@ let rowSpacing = 16;
 let margin = 100;
 let strandOffset;
 let rowSizeOffset;
+let colorA;
+let colorB;
 
 function setup() {
   createCanvas(600, 600);
+
+  colorA = color(253, 174, 120);
+  colorB = color(226, 129, 161);
+
+  noStroke();
 }
 
 function draw() {
   background(4, 58, 74);
   translate(0, height/2);
 
-  let colorA = color(253, 174, 120);
-  let colorB = color(226, 129, 161);
-
   offset = 0;
-
-	noStroke();
 
   for (let strand = 0; strand < 2; strand++) {
     strandOffset = (PI/4)*strand;
